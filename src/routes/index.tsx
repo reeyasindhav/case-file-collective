@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const featured = cases[0];
+  const featured = cases[0]!;
 
   return (
     <PublicShell>

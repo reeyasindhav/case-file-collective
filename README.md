@@ -36,3 +36,20 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+I've laid the foundation for Casebook but ran out of room before finishing — here's where things stand.
+
+Done so far
+
+- Dark investigative design system in `src/styles.css` (charcoal/ember/brass palette, Instrument Serif + Inter Tight + JetBrains Mono, dossier card, grain, scan-line, redact, rise-in/pulse animations)
+- `src/lib/data.ts` — full mockup dataset: 6 case files with suspects, timelines and evidence manifests, 6 discussions, 6 podcast/documentary items, private notes, stats (images via open-source picsum, none generated)
+- `src/lib/auth.tsx` — mock session + saved-cases store on localStorage
+- `src/components/site-chrome.tsx` and `case-card.tsx` — header/footer/shell, status chips, dossier case cards
+- `src/routes/__root.tsx` — fonts, Casebook metadata, AuthProvider, toaster
+- `src/routes/index.tsx` — landing page (hero, featured dossier, how-it-works, community preview, submit CTA)
+
+Still to build (the current TypeScript errors are just missing routes — they clear once these files exist):
+`cases.index.tsx`, `cases.$slug.tsx` (dossier with timeline/evidence/suspect tabs), `community.index.tsx`, `community.$id.tsx`, `media.tsx`, `about.tsx`, `login.tsx`, `signup.tsx`, plus the `_authenticated` gate with `dashboard`, `board` (evidence board), `saved`, `notes` and `submit`. One small fix also needed: guard `cases[0]` with a non-null access in `index.tsx`.
+
+User flow
+Landing → browse Case files → open a case dossier (timeline, suspects, evidence) → join a discussion → prompted to sign up/login → authenticated workspace: dashboard → saved cases, evidence board, private notes, submit a case → sign out back to landing.
